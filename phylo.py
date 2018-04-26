@@ -1,4 +1,20 @@
 
+import genome
+
+def cartesian_product(A, B):
+    """Returns the cartesian product of A and B.
+    Parameters: A is an iterable.
+                B is an iterable
+    Returns: A set of tuples such that (x in A, y in B).
+    Pre-conditions: A is iterable.
+                    B is iterable
+    Post-conditions: a set is returned."""
+    lst = []
+    for x in A:
+        for y in B:
+            lst.append((x, y))
+    return set(lst)
+
 def process_infile(infile):
     """Processes the infile for the organisms.
     Parameters: infile is an open File.
@@ -25,4 +41,5 @@ def main():
     except ValueError:
         print("ERROR: Bad value for N")
         exit()
-    
+    orgs = process_infile(infile)
+    orgs = set([genome.GenomeData(x[0], x[1], N) for x in orgs])

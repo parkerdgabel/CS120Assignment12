@@ -57,4 +57,14 @@ class GenomeData:
         Post-conditions: a set is returned."""
         return self._ngrams
 
-    
+    def __eq__(self, other):
+        """Equality operator for GenomeData.
+        Parameters: other is the data to compare too.
+        Returns: a boolean if the Data is the same,
+        Pre-conditions: other is a GenomeData.
+        Post-conditions: a boolean is returned."""
+        assert type(other) == GenomeData
+        id, seq, ngrams = self.id(), self.sequence(), self.ngrams()
+        o_id, o_seq, o_ngrams = other.id(), other.sequence(), self.ngrams()
+        return (id, seq, ngrams) == (o_id, o_seq, o_ngrams)
+
